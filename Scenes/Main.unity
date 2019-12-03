@@ -3840,12 +3840,6 @@ Transform:
   m_Father: {fileID: 635230987}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
---- !u!1 &1738866124 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9213659280155146968, guid: a7a59f18cf67a3c49a23b860b207ef0f,
-    type: 3}
-  m_PrefabInstance: {fileID: 9213659281789028116}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1785578009
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4827,6 +4821,17 @@ PrefabInstance:
         type: 3}
       propertyPath: instantiation_object
       value: 
-      objectReference: {fileID: 1738866124}
+      objectReference: {fileID: 9213659280155146968, guid: a7a59f18cf67a3c49a23b860b207ef0f,
+        type: 3}
+    - target: {fileID: 9213659280155146950, guid: a7a59f18cf67a3c49a23b860b207ef0f,
+        type: 3}
+      propertyPath: size_scale_max
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9213659280155146950, guid: a7a59f18cf67a3c49a23b860b207ef0f,
+        type: 3}
+      propertyPath: max_balls_on_screen
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7a59f18cf67a3c49a23b860b207ef0f, type: 3}

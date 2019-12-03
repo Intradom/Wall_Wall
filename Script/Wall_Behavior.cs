@@ -5,10 +5,12 @@ using UnityEngine;
 public class Wall_Behavior : MonoBehaviour
 {
     public float green_wall_prob = 0.1f;
-    public float blue_wall_prob = 0.1f;
-    public float yellow_wall_prob = 0.1f;
+    public float cyan_wall_prob = 0.05f;
+    public float red_wall_prob = 0.05f;
+    public float blue_wall_prob = 0.03f;
+    public float yellow_wall_prob = 0.02f;
     public float min_change_CD_seconds = 5;
-    public float max_change_CD_seconds = 30;
+    public float max_change_CD_seconds = 10;
     private class Wall_Color
     {
         public Color color;
@@ -79,6 +81,8 @@ public class Wall_Behavior : MonoBehaviour
     private void Start()
     {
         colors.Add(new Wall_Color(Color.green, green_wall_prob));
+        colors.Add(new Wall_Color(Color.cyan, cyan_wall_prob));
+        colors.Add(new Wall_Color(Color.red, red_wall_prob));
         colors.Add(new Wall_Color(Color.blue, blue_wall_prob));
         colors.Add(new Wall_Color(Color.yellow, yellow_wall_prob));
 

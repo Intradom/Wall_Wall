@@ -7,7 +7,11 @@ public class Ball_Behavior : MonoBehaviour
     public GameObject instantiation_object;
     public float speed = 10f;
     public float speed_scale = 1.25f;
+    public float max_speed = 100f;
+    public float size_scale = 1.25f;
+    public int size_scale_max = 5;
     public float immunity_seconds = 1f;
+    public int max_balls_on_screen = 10;
 
     private Rigidbody self_rbody;
     private Renderer self_renderer;
@@ -15,12 +19,16 @@ public class Ball_Behavior : MonoBehaviour
     private ParticleSystem.MainModule self_particle_settings;
     private Color current_color;
     private float init_time;
+    private int size_scale_count = 0;
 
     public Color GetColor()
     {
         Color t_color = current_color;
 
-        SetColor(Color.gray);
+        if (current_color != Color.gray)
+        {
+            SetColor(Color.gray);
+        }
 
         return t_color;
     }
@@ -76,16 +84,35 @@ public class Ball_Behavior : MonoBehaviour
             // Do different things based on current_color of the wall hit
             if (new_color == Color.yellow)
             {
-                GameObject inst = Instantiate(instantiation_object, transform.position, Quaternion.identity);
-                inst.GetComponent<Ball_Behavior>().speed = speed;
-            }
-            else if (new_color == Color.blue)
-            {
-                speed /= speed_scale;
+                int num_balls = GameObject.FindGameObjectsWithTag("Ball").Length;
+                if (num_balls < max_balls_on_screen)
+                {
+                    GameObject inst = Instantiate(instantiation_object, transform.position, Quaternion.identity);
+                    inst.GetComponent<Ball_Behavior>().speed = speed;
+                    inst.transform.localScale = Vector3.one * Mathf.Pow(size_scale, size_scale_count);
+                }
             }
             else if (new_color == Color.green)
             {
                 speed *= speed_scale;
+                if (speed > max_speed)
+                {
+                    speed = max_speed;
+                }
+            }
+            else if (new_color == Color.cyan)
+            {
+                speed /= speed_scale;
+            }
+            else if (new_color == Color.red && size_scale_count < size_scale_max)
+            {
+                transform.localScale *= size_scale;
+                size_scale_count += 1;
+            }
+            else if (new_color == Color.blue)
+            {
+                transform.localScale /= size_scale;
+                size_scale_count -= 1;
             }
 
             self_particle_settings.startColor = new ParticleSystem.MinMaxGradient(new_color);

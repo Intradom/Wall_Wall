@@ -106,7 +106,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   green_wall_prob: 0.1
-  blue_wall_prob: 0.05
+  cyan_wall_prob: 0.05
+  red_wall_prob: 0.05
+  blue_wall_prob: 0.04
   yellow_wall_prob: 0.01
   min_change_CD_seconds: 5
   max_change_CD_seconds: 10
